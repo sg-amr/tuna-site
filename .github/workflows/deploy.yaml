@@ -8,11 +8,8 @@ on:
   # 手動実行を可能にする
   workflow_dispatch:
 
-# GITHUB_TOKENの権限を設定
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write 
 
 jobs:
   build-and-deploy:
