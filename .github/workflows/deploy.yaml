@@ -1,11 +1,9 @@
 name: Deploy Markdown to GitHub Pages (Node.js)
 
 on:
-  # mainブランチへのプッシュ時に実行
   push:
     branches:
       - main
-  # 手動実行を可能にする
   workflow_dispatch:
 
 permissions:
@@ -20,28 +18,30 @@ jobs:
         uses: actions/checkout@v4
         
       - name: Set up Node.js
-        # Node.js環境のセットアップ
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # 任意の安定バージョンを指定
+          node-version: '20'
           
       - name: Install dependencies
-        # script/build.jsの実行に必要なnpmパッケージをインストール
         run: |
           npm install
           
       - name: Build HTML files
-        # 変換スクリプトを実行
-        # スクリプトは src/ から dist/ にHTMLを生成する想定
         run: node script/build.js
+
+      - name: Copy public assets to dist
+        run: |
+          echo "Copying contents of public/ to dist/"
+          if [ -d "public" ]; then
+            cp -R public/. dist/
+            echo "Copy complete."
+          else
+            echo "public directory not found. Skipping copy step."
+          fi
       
       - name: Push to gh-pages branch
-        # ./dist ディレクトリの内容を gh-pages ブランチにプッシュ
         uses: peaceiris/actions-gh-pages@v4
         with:
-          # GitHub Actionsの組み込みトークンを使用
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          # デプロイ対象のディレクトリ
           publish_dir: ./dist
-          # デプロイ先のブランチを gh-pages に指定
           publish_branch: gh-pages
