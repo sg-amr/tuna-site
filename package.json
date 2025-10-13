@@ -1,0 +1,12 @@
+{
+  "name": "markdown-to-html-project",
+  "version": "1.0.0",
+  "description": "Markdown to HTML converter for GitHub Pages",
+  "main": "script/build.js",
+  "dependencies": {
+    "markdown-it": "^14.0.0"
+  },
+  "scripts": {
+    "build": "node script/build.js"
+  }
+}
