@@ -47,13 +47,56 @@ fs.readdir(SOURCE_DIR, (err, files) => {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${baseName}</title>
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css">
     <style>
-      body { font-family: sans-serif; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 20px; }
+      header {
+        background-color: #cceeee;
+        padding: 0 10px;
+        text-align: left;
+        font-size: 27px;
+        display: flex;
+        justify-content: space-between;
+      }
+      header nav {
+        margin: 0;
+        padding: 0;
+      }
+      header nav ul li {
+        font-weight: normal;
+        font-size: 20px;
+        margin: 0 10px;
+        padding: 0;
+      }
+      header nav ul li a:hover {
+        text-decoration: underline;
+      }
+      header nav ul li a {
+        color: #111;
+        font-weight: normal;
+        text-decoration: none;
+      }
+      header nav ul {
+        display: flex;
+        justify-content: space-around;
+        margin: 0 10px;
+      }
     </style>
-    <link rel="stylesheet" href="https://unpkg.com/mvp.css"> 
 </head>
 <body>
-    ${htmlContent}
+    <header>
+      Ninastan
+      <nav>
+        <ul>
+          <li><a href="/">TOP</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      ${htmlContent}
+    </main>
+    <footer>
+      <span>&copy; Ninastan All rights reserved.</span>
+    </footer>
 </body>
 </html>`;
 
