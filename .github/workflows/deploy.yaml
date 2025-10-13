@@ -37,13 +37,14 @@ jobs:
         # 変換スクリプトを実行
         # スクリプトは src/ から dist/ にHTMLを生成する想定
         run: node script/build.js
-        
-      - name: Deploy to GitHub Pages
-        # dist/ディレクトリの内容をgh-pagesブランチにデプロイ
+      
+      - name: Push to gh-pages branch
+        # ./dist ディレクトリの内容を gh-pages ブランチにプッシュ
         uses: peaceiris/actions-gh-pages@v4
         with:
+          # GitHub Actionsの組み込みトークンを使用
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          # スクリプトが生成するHTML格納ディレクトリ
+          # デプロイ対象のディレクトリ
           publish_dir: ./dist
-          # デプロイ先のブランチ
+          # デプロイ先のブランチを gh-pages に指定
           publish_branch: gh-pages
