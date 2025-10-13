@@ -49,6 +49,13 @@ fs.readdir(SOURCE_DIR, (err, files) => {
     <title>${baseName}</title>
     <link rel="stylesheet" href="https://unpkg.com/mvp.css">
     <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      main {
+        padding: 4px;
+      }
       header {
         background-color: #cceeee;
         padding: 0 10px;
@@ -57,6 +64,7 @@ fs.readdir(SOURCE_DIR, (err, files) => {
         display: flex;
         justify-content: space-between;
         box-shadow: 0px 0px 10px -5px #777777;
+        width: 100%;
       }
       header nav {
         margin: 0;
