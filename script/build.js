@@ -56,6 +56,7 @@ fs.readdir(SOURCE_DIR, (err, files) => {
         font-size: 27px;
         display: flex;
         justify-content: space-between;
+        box-shadow: 0px 0px 10px -5px #777777;
       }
       header nav {
         margin: 0;
