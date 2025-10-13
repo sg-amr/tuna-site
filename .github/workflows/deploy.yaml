@@ -1,0 +1,49 @@
+name: Deploy Markdown to GitHub Pages (Node.js)
+
+on:
+  # mainブランチへのプッシュ時に実行
+  push:
+    branches:
+      - main
+  # 手動実行を可能にする
+  workflow_dispatch:
+
+# GITHUB_TOKENの権限を設定
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Set up Node.js
+        # Node.js環境のセットアップ
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # 任意の安定バージョンを指定
+          
+      - name: Install dependencies
+        # script/build.jsの実行に必要なnpmパッケージをインストール
+        run: |
+          npm install
+          
+      - name: Build HTML files
+        # 変換スクリプトを実行
+        # スクリプトは src/ から dist/ にHTMLを生成する想定
+        run: node script/build.js
+        
+      - name: Deploy to GitHub Pages
+        # dist/ディレクトリの内容をgh-pagesブランチにデプロイ
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # スクリプトが生成するHTML格納ディレクトリ
+          publish_dir: ./dist
+          # デプロイ先のブランチ
+          publish_branch: gh-pages
