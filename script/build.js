@@ -50,6 +50,7 @@ fs.readdir(SOURCE_DIR, (err, files) => {
     <style>
       body { font-family: sans-serif; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 20px; }
     </style>
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css"> 
 </head>
 <body>
     ${htmlContent}
