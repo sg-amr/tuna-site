@@ -9,13 +9,13 @@
 この教科書を読んで、誰かこの言語に興味を持ってくれたら嬉しいです。
 
 ## 目次
-[アルメニア語の概要](meag_overview.md)
+[アルメニア語の概要]
 
 --[言語の概要](meag_overview_language.md)
 
 --[呼称について](meag_overview_naming.md)
 
-[文字と発音](meag_alphabet_and_pronunciation.md)
+[文字と発音]
 
 --[文字](meag_alphabet.md)
 
